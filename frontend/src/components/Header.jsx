@@ -13,7 +13,7 @@ export default function Header({ onToggleDarkMode, isDarkMode }) {
   const dispatch = useDispatch();
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-panel border-b border-white/5 px-6 py-4 flex items-center justify-between">
+    <header role="banner" className="sticky top-0 z-50 w-full glass-panel border-b border-white/5 px-6 py-4 flex items-center justify-between">
       {/* Brand Section */}
       <div className="flex items-center gap-4">
         <motion.div 
@@ -41,6 +41,7 @@ export default function Header({ onToggleDarkMode, isDarkMode }) {
           <div className="flex items-center gap-2 bg-surface/40 border border-white/10 rounded-full px-4 py-1.5 hover:border-primary/50 transition-all cursor-pointer">
             <Globe size={14} className="text-muted group-hover:text-primary transition-colors" />
             <select 
+              aria-label="Select country or region"
               className="bg-transparent border-none text-xs font-semibold focus:ring-0 text-main cursor-pointer appearance-none pr-4"
               value={country}
               onChange={(e) => dispatch(setCountry(e.target.value))}
@@ -55,16 +56,19 @@ export default function Header({ onToggleDarkMode, isDarkMode }) {
         <div className="h-4 w-px bg-white/10 mx-1" />
 
         <div className="flex items-center gap-1">
-          <HeaderAction icon={<Download size={18} />} title="Export History" />
+          <HeaderAction icon={<Download size={18} />} title="Export chat history" ariaLabel="Export chat history" />
           <HeaderAction 
             icon={isDarkMode ? <Sun size={18} /> : <Moon size={18} />} 
             onClick={onToggleDarkMode} 
             title="Toggle Theme"
+            ariaLabel={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           />
           <HeaderAction 
             icon={<Settings size={18} />} 
             onClick={() => setShowSettings(!showSettings)} 
             title="Settings"
+            ariaLabel="Open app settings"
+            ariaExpanded={showSettings}
           />
         </div>
       </div>
@@ -80,8 +84,8 @@ export default function Header({ onToggleDarkMode, isDarkMode }) {
           >
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-bold text-bold">App Settings</h3>
-              <button onClick={() => setShowSettings(false)} className="p-1 hover:bg-white/10 rounded-lg">
-                <X size={18} className="text-muted" />
+              <button onClick={() => setShowSettings(false)} aria-label="Close settings" className="p-1 hover:bg-white/10 rounded-lg">
+                <X size={18} className="text-muted" aria-hidden="true" />
               </button>
             </div>
             {/* Settings content would go here */}
@@ -107,7 +111,7 @@ export default function Header({ onToggleDarkMode, isDarkMode }) {
   );
 }
 
-function HeaderAction({ icon, onClick, title }) {
+function HeaderAction({ icon, onClick, title, ariaLabel, ariaExpanded }) {
   return (
     <motion.button
       whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
@@ -115,8 +119,10 @@ function HeaderAction({ icon, onClick, title }) {
       onClick={onClick}
       className="p-2.5 rounded-xl text-muted hover:text-bold transition-all hover:glass-glow-blue border border-transparent hover:border-white/10"
       title={title}
+      aria-label={ariaLabel || title}
+      aria-expanded={ariaExpanded}
     >
-      {icon}
+      <span aria-hidden="true">{icon}</span>
     </motion.button>
   );
 }

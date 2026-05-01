@@ -73,7 +73,13 @@ export default function ChatWindow() {
   return (
     <div className="flex flex-col h-full bg-transparent relative">
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-8 pb-32">
+      <div
+        role="log"
+        aria-label="Chat messages"
+        aria-live="polite"
+        aria-relevant="additions"
+        className="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-8 pb-32"
+      >
         {messages.length === 0 ? (
           <motion.div 
             className="h-full flex flex-col items-center justify-center text-center max-w-lg mx-auto"
@@ -140,11 +146,14 @@ export default function ChatWindow() {
           <div className="glass-panel rounded-[2rem] p-2 flex items-center gap-2 border-white/10 input-glow transition-all">
             <div className="flex-1 relative flex items-center">
               <input
+                id="chat-input"
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Type your message..."
+                aria-label="Type your message to ElectBot"
+                aria-describedby="chat-disclaimer"
                 className="w-full bg-transparent border-none pl-6 pr-4 py-3 text-main placeholder-muted focus:ring-0 text-base"
                 disabled={isLoading}
               />
@@ -155,16 +164,17 @@ export default function ChatWindow() {
               <motion.button
                 onClick={() => handleSend()}
                 disabled={!input.trim() || isLoading}
+                aria-label="Send message"
                 className="w-12 h-12 rounded-[1.25rem] bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-600 flex items-center justify-center transition-all text-white shadow-xl shadow-blue-500/20"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Send size={20} />
+                <Send size={20} aria-hidden="true" />
               </motion.button>
             </div>
           </div>
           <div className="mt-3 text-center">
-            <p className="text-[10px] text-muted font-medium uppercase tracking-[0.2em]">
+            <p id="chat-disclaimer" className="text-[10px] text-muted font-medium uppercase tracking-[0.2em]">
               Neutral Educational Assistant • Strictly Non-Partisan
             </p>
           </div>

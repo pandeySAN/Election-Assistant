@@ -67,6 +67,8 @@ export default function VoiceInput({ onTranscript, disabled = false }) {
     <motion.button
       onClick={toggleListening}
       disabled={disabled}
+      aria-label={isListening ? 'Stop voice input' : 'Start voice input'}
+      aria-pressed={isListening}
       className={`relative p-2.5 rounded-full transition-all ${
         isListening
           ? 'bg-red-500 text-white shadow-lg shadow-red-500/50'
@@ -85,7 +87,7 @@ export default function VoiceInput({ onTranscript, disabled = false }) {
             exit={{ scale: 0, rotate: 180 }}
             transition={{ duration: 0.2 }}
           >
-            <MicOff size={18} />
+            <MicOff size={18} aria-hidden="true" />
           </motion.div>
         ) : (
           <motion.div
@@ -95,10 +97,11 @@ export default function VoiceInput({ onTranscript, disabled = false }) {
             exit={{ scale: 0, rotate: -180 }}
             transition={{ duration: 0.2 }}
           >
-            <Mic size={18} />
+            <Mic size={18} aria-hidden="true" />
           </motion.div>
         )}
       </AnimatePresence>
+
 
       {/* Pulse animation when listening */}
       {isListening && (

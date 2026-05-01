@@ -1,32 +1,30 @@
-const Groq = require('groq-sdk');
+const { getGeminiClient } = require('../config/gemini');
 const { buildSystemPrompt } = require('./context.service');
-
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const getChatResponse = async ({ message, history, country, electionType, userLevel }) => {
   try {
-    // Format history for Groq (OpenAI-compatible format)
-    const formattedHistory = (history || []).map(msg => ({
-      role: msg.role === 'assistant' ? 'assistant' : 'user',
-      content: msg.content
-    }));
-
-    const messages = [
-      { role: 'system', content: buildSystemPrompt(country, electionType, userLevel) },
-      ...formattedHistory,
-      { role: 'user', content: message }
-    ];
-
-    const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile', // Free, fast, highly capable
-      messages,
-      max_tokens: 800,
+    const genAI = getGeminiClient();
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-1.5-flash',
+      systemInstruction: buildSystemPrompt(country, electionType, userLevel),
     });
 
-    const text = completion.choices[0]?.message?.content || '';
+    // Format history for Gemini multi-turn chat
+    const formattedHistory = (history || []).map(msg => ({
+      role: msg.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: msg.content }],
+    }));
+
+    const chat = model.startChat({
+      history: formattedHistory,
+      generationConfig: { maxOutputTokens: 800 },
+    });
+
+    const result = await chat.sendMessage(message);
+    const text = result.response.text();
     return parseResponse(text);
   } catch (error) {
-    console.error('Groq API Error:', error);
+    console.error('Gemini API Error:', error);
     throw new Error('Failed to fetch response from ElectBot');
   }
 };
@@ -48,7 +46,7 @@ const parseResponse = (text) => {
   return {
     reply: cleanReply,
     suggestedFollowUps,
-    confidence: 0.95
+    confidence: 0.95,
   };
 };
 

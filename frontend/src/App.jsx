@@ -33,29 +33,37 @@ function App() {
       <div className="flex flex-1 overflow-hidden">
         {/* Redesigned Sidebar */}
         <motion.nav 
+          role="navigation"
+          aria-label="Main navigation"
           className="hidden lg:flex flex-col w-72 flex-shrink-0 border-r border-white/5 bg-slate-900/20 backdrop-blur-md p-6"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
         >
           {/* Tab Switcher */}
-          <div className="bg-slate-950/40 p-1.5 rounded-2xl border border-white/5 mb-8 flex flex-col gap-1 relative">
+          <div role="tablist" aria-label="Application sections" className="bg-slate-950/40 p-1.5 rounded-2xl border border-white/5 mb-8 flex flex-col gap-1 relative">
             <TabButton 
               active={activeTab === 'chat'} 
               onClick={() => setActiveTab('chat')} 
               icon={<MessageSquare size={18} />} 
               label="Chat Assistant" 
+              tabId="tab-chat"
+              panelId="panel-chat"
             />
             <TabButton 
               active={activeTab === 'timeline'} 
               onClick={() => setActiveTab('timeline')} 
               icon={<Calendar size={18} />} 
               label="Election Timeline" 
+              tabId="tab-timeline"
+              panelId="panel-timeline"
             />
             <TabButton 
               active={activeTab === 'learn'} 
               onClick={() => setActiveTab('learn')} 
               icon={<BookOpen size={18} />} 
               label="Learning Center" 
+              tabId="tab-learn"
+              panelId="panel-learn"
             />
           </div>
 
@@ -92,12 +100,16 @@ function App() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="flex-1 overflow-hidden"
-            >
-              {activeTab === 'chat' && <ChatWindow onNavigate={setActiveTab} />}
-              {activeTab === 'timeline' && <ElectionTimeline onNavigate={setActiveTab} />}
-              {activeTab === 'learn' && <LearnTab onNavigate={setActiveTab} />}
-            </motion.div>
+              <div
+                role="tabpanel"
+                id={`panel-${activeTab}`}
+                aria-labelledby={`tab-${activeTab}`}
+                className="flex-1 overflow-hidden"
+              >
+                {activeTab === 'chat' && <ChatWindow onNavigate={setActiveTab} />}
+                {activeTab === 'timeline' && <ElectionTimeline onNavigate={setActiveTab} />}
+                {activeTab === 'learn' && <LearnTab onNavigate={setActiveTab} />}
+              </div>
           </AnimatePresence>
         </main>
       </div>
@@ -105,9 +117,14 @@ function App() {
   );
 }
 
-function TabButton({ active, onClick, icon, label }) {
+function TabButton({ active, onClick, icon, label, tabId, panelId }) {
   return (
     <button
+      id={tabId}
+      role="tab"
+      aria-selected={active}
+      aria-controls={panelId}
+      tabIndex={active ? 0 : -1}
       onClick={onClick}
       className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 relative group ${
         active ? 'text-white' : 'text-muted hover:text-main'
