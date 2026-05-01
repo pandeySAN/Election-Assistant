@@ -13,8 +13,23 @@ const { connectRedis } = require('./config/redis');
 // Initialize Express app
 const app = express();
 
+// CORS — allow the Render frontend (set CORS_ORIGIN in Render env vars) + local dev
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+  : ['http://localhost:5173', 'http://localhost:3000'];
+
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow server-to-server / health-check requests with no origin
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    },
+    credentials: true,
+  })
+);
 app.use(helmet());
 app.use(express.json());
 app.use(morgan('dev'));
