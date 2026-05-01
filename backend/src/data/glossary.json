@@ -1,0 +1,32 @@
+[
+  {
+    "term": "EVM",
+    "definition": "Electronic Voting Machine, used to record votes electronically.",
+    "example": "Voters press a button on the EVM next to their chosen candidate.",
+    "relatedTerms": ["VVPAT", "Polling Booth"]
+  },
+  {
+    "term": "Constituency",
+    "definition": "A specific geographical area that elects a single representative.",
+    "example": "India is divided into 543 parliamentary constituencies for Lok Sabha elections.",
+    "relatedTerms": ["MP", "MLA", "Electorate"]
+  },
+  {
+    "term": "Lok Sabha",
+    "definition": "The lower house of India's bicameral Parliament.",
+    "example": "Members of the Lok Sabha are directly elected by the public.",
+    "relatedTerms": ["Rajya Sabha", "Parliament"]
+  },
+  {
+    "term": "Model Code of Conduct",
+    "definition": "Guidelines issued by the ECI for conduct of political parties and candidates during elections.",
+    "example": "The Model Code of Conduct prevents the ruling party from announcing new schemes right before an election.",
+    "relatedTerms": ["ECI", "Campaign"]
+  },
+  {
+    "term": "NOTA",
+    "definition": "None of the Above, an option that allows voters to officially reject all candidates.",
+    "example": "If a voter doesn't like any candidate, they can press the NOTA button.",
+    "relatedTerms": ["EVM", "Right to Reject"]
+  }
+]

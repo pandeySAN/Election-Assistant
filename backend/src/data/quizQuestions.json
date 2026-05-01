@@ -1,0 +1,39 @@
+{
+  "general": [
+    {
+      "id": "q1",
+      "question": "What does EVM stand for?",
+      "options": ["Electronic Voting Machine", "Electoral Verification Method", "Election Vote Monitor", "Electronic Vote Meter"],
+      "correct": 0,
+      "explanation": "EVM stands for Electronic Voting Machine, used in India to record votes electronically instead of using paper ballots."
+    },
+    {
+      "id": "q2",
+      "question": "Who conducts national elections in India?",
+      "options": ["The President", "The Parliament", "Election Commission of India", "The Supreme Court"],
+      "correct": 2,
+      "explanation": "The Election Commission of India (ECI) is an autonomous constitutional authority responsible for administering election processes in India."
+    },
+    {
+      "id": "q3",
+      "question": "What is the minimum age to vote in India?",
+      "options": ["16", "21", "25", "18"],
+      "correct": 3,
+      "explanation": "The voting age in India was reduced from 21 to 18 years by the 61st Amendment Act of 1988."
+    },
+    {
+      "id": "q4",
+      "question": "How long is a Lok Sabha term normally?",
+      "options": ["4 years", "5 years", "6 years", "3 years"],
+      "correct": 1,
+      "explanation": "The normal term of the Lok Sabha is 5 years, after which it is dissolved and general elections are held."
+    },
+    {
+      "id": "q5",
+      "question": "What is a constituency?",
+      "options": ["A political party", "A geographic voting area", "A type of ballot", "An election officer"],
+      "correct": 1,
+      "explanation": "A constituency is a specific geographic area that elects one representative to a legislative body."
+    }
+  ]
+}

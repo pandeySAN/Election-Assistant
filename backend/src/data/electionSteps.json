@@ -1,0 +1,145 @@
+{
+  "IN": {
+    "general": [
+      {
+        "id": "in-1",
+        "title": "Election Announcement",
+        "date": "March 16, 2024",
+        "description": "ECI announces the official schedule for the Lok Sabha elections.",
+        "status": "completed",
+        "icon": "📣",
+        "details": ["Dates declared", "Phases announced", "Code of conduct begins"]
+      },
+      {
+        "id": "in-2",
+        "title": "Model Code of Conduct",
+        "date": "March 16, 2024",
+        "description": "Guidelines for political parties and candidates come into effect.",
+        "status": "completed",
+        "icon": "📝",
+        "details": ["No new government schemes", "Fair campaigning"]
+      },
+      {
+        "id": "in-3",
+        "title": "Voter Registration Deadline",
+        "date": "Varies by phase",
+        "description": "Last date for citizens to enroll or update details in the voter list.",
+        "status": "completed",
+        "icon": "🗳️",
+        "details": ["Form 6 submission", "Correction of errors"]
+      },
+      {
+        "id": "in-4",
+        "title": "Candidate Nomination",
+        "date": "April 2024",
+        "description": "Candidates file their nomination papers and affidavits.",
+        "status": "completed",
+        "icon": "🏃",
+        "details": ["Filing with Returning Officer", "Declaring assets"]
+      },
+      {
+        "id": "in-5",
+        "title": "Campaign Period",
+        "date": "April - May 2024",
+        "description": "Parties hold rallies, distribute manifestos, and seek votes.",
+        "status": "active",
+        "icon": "📢",
+        "details": ["Public meetings", "Door-to-door"]
+      },
+      {
+        "id": "in-6",
+        "title": "Silence Period",
+        "date": "48 hours before polling",
+        "description": "All public campaigning must stop 48 hours before voting begins.",
+        "status": "upcoming",
+        "icon": "🔇",
+        "details": ["No loudspeakers", "No public rallies"]
+      },
+      {
+        "id": "in-7",
+        "title": "Polling Day",
+        "date": "April 19 - June 1, 2024",
+        "description": "Voters cast their ballot using Electronic Voting Machines (EVMs).",
+        "status": "upcoming",
+        "icon": "✅",
+        "details": ["7 phases", "VVPAT verification"]
+      },
+      {
+        "id": "in-8",
+        "title": "Vote Counting",
+        "date": "June 4, 2024",
+        "description": "EVMs are opened and votes are tallied under strict supervision.",
+        "status": "upcoming",
+        "icon": "🔢",
+        "details": ["Presence of candidate agents", "Postal ballots counted first"]
+      },
+      {
+        "id": "in-9",
+        "title": "Results Declared",
+        "date": "June 4, 2024",
+        "description": "The final winners for each constituency are officially announced.",
+        "status": "upcoming",
+        "icon": "🏆",
+        "details": ["Certificate of election"]
+      }
+    ]
+  },
+  "US": {
+    "general": [
+      {
+        "id": "us-1",
+        "title": "Primaries and Caucuses",
+        "date": "Jan - June 2024",
+        "description": "States hold primary elections or caucuses to choose party delegates.",
+        "status": "active",
+        "icon": "🗳️",
+        "details": ["Super Tuesday", "State-level voting"]
+      },
+      {
+        "id": "us-2",
+        "title": "National Conventions",
+        "date": "July - Aug 2024",
+        "description": "Parties officially nominate their Presidential and VP candidates.",
+        "status": "upcoming",
+        "icon": "🎉",
+        "details": ["RNC and DNC", "Party platform adoption"]
+      },
+      {
+        "id": "us-3",
+        "title": "General Election Campaign",
+        "date": "Sept - Oct 2024",
+        "description": "Candidates debate and campaign across the country.",
+        "status": "upcoming",
+        "icon": "📢",
+        "details": ["Presidential debates", "Swing state focus"]
+      },
+      {
+        "id": "us-4",
+        "title": "Election Day",
+        "date": "Nov 5, 2024",
+        "description": "Citizens vote for electors representing their chosen candidate.",
+        "status": "upcoming",
+        "icon": "✅",
+        "details": ["First Tuesday after first Monday in Nov"]
+      },
+      {
+        "id": "us-5",
+        "title": "Electoral College Vote",
+        "date": "Dec 17, 2024",
+        "description": "Electors meet in their states to officially cast votes for President.",
+        "status": "upcoming",
+        "icon": "📜",
+        "details": ["270 votes needed to win"]
+      },
+      {
+        "id": "us-6",
+        "title": "Inauguration Day",
+        "date": "Jan 20, 2025",
+        "description": "The President-elect is sworn into office.",
+        "status": "upcoming",
+        "icon": "🏛️",
+        "details": ["Oath of office", "Transfer of power"]
+      }
+    ]
+  }
+}
