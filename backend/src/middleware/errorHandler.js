@@ -17,6 +17,14 @@ const logger = winston.createLogger({
   ]
 });
 
+/**
+ * Global error handling middleware.
+ * Logs error details and returns a standardized JSON response.
+ * @param {Error} err - The error object.
+ * @param {import('express').Request} req - The Express request object.
+ * @param {import('express').Response} res - The Express response object.
+ * @param {import('express').NextFunction} next - The Express next middleware function.
+ */
 const errorHandler = (err, req, res, next) => {
   // Log error details
   logger.error({
@@ -48,6 +56,11 @@ const errorHandler = (err, req, res, next) => {
 };
 
 // 404 handler
+/**
+ * Middleware to handle undefined routes (404 Not Found).
+ * @param {import('express').Request} req - The Express request object.
+ * @param {import('express').Response} res - The Express response object.
+ */
 const notFoundHandler = (req, res) => {
   res.status(404).json({
     success: false,

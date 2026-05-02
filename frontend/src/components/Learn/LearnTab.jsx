@@ -320,6 +320,7 @@ function GlossarySection({ onNavigate }) {
         <input
           type="text"
           placeholder="Search political terms..."
+          aria-label="Search political terms"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full bg-surface border border-white/5 rounded-xl pl-12 pr-4 py-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-bold placeholder-muted transition-all"

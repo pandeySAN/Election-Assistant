@@ -138,7 +138,11 @@ function TimelineStep({ step, index, isLast, onAsk }) {
             <p className="text-sm text-primary font-medium mb-2">{step.date}</p>
             <p className="text-main text-sm">{step.description}</p>
           </div>
-          <button className="text-muted hover:text-main p-1">
+          <button 
+            className="text-muted hover:text-main p-1"
+            aria-label={expanded ? "Collapse details" : "Expand details"}
+            aria-expanded={expanded}
+          >
             <motion.div animate={{ rotate: expanded ? 180 : 0 }}>
               <ChevronDown size={20} />
             </motion.div>
