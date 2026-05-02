@@ -100,6 +100,7 @@ function App() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
+            >
               <div
                 role="tabpanel"
                 id={`panel-${activeTab}`}
@@ -110,6 +111,7 @@ function App() {
                 {activeTab === 'timeline' && <ElectionTimeline onNavigate={setActiveTab} />}
                 {activeTab === 'learn' && <LearnTab onNavigate={setActiveTab} />}
               </div>
+            </motion.div>
           </AnimatePresence>
         </main>
       </div>
